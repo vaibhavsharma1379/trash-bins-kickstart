@@ -1,0 +1,32 @@
+import re
+
+a='100100100100'
+
+def findele(a,str):
+    ele=[]
+
+    p = re.finditer(str, a)
+    for i in p:
+        r = i.start()
+        ele.append(r)
+    return ele
+o=findele(a,"1")
+i=findele(a,"0")
+print(o,i)
+k=[]
+
+g=[]
+for j in range(len(i)):
+    for r in range(len(o)):
+        diff = abs(o[r] - i[j])
+        g.append(diff)
+print(g)
+i=0
+while i<len(g):
+    k.append(g[i:i+len(o)])
+    i+=len(o)
+print(k)
+m=sum(list(map(min,k)))
+print(m)
+
+
